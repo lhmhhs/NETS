@@ -25,6 +25,75 @@ A Windows network monitor that shows nearby devices, your network settings, exte
 
 The window starts with a 3 : 2 : 5 split (left, middle, right). Drag the panel borders to resize.
 
+## Screen guide
+
+![Full window](images/screenshot-full.png)
+
+The window is split into three columns: **left** (settings, external connections, shared folders), **middle** (nearby devices) and **right** (speed).
+
+### 1. Title bar
+
+![Title bar](images/01-title-bar.png)
+
+Shows the program name, this PC's IPv4 addresses, and the device count. **Scan now** starts a device scan, **Help** opens the help window, and the **language picker** (top right) switches the interface language.
+
+### 2. My network settings
+
+![My network settings](images/02-network-settings.png)
+
+Connection type (wired or Wi-Fi), adapter name and description. The full list below also shows IPv4 addresses, subnet mask, gateway, DNS servers, DHCP status, MAC address, link speed and MTU. The panel refreshes every 30 seconds.
+
+### 3. External ports and 5-second traffic
+
+![External ports](images/03-external-ports.png)
+
+- **Last 5 s:** total received and sent MB for this PC, with the last six intervals.
+- **External connections:** outbound TCP connections grouped by remote IP, country code, remote port (with service name, e.g. 443 HTTPS), process and connection count. Rows are sorted by country; LAN and unknown entries are listed last.
+- **Cumulative traffic per port:** running totals per remote port since the program started. When the statistics cannot be read, a status message is shown instead. The screenshot shows error 87, which means the per-port totals are not yet working on this build.
+
+### 4. Shared folders and connections
+
+![Shared folders](images/04-shared-folders.png)
+
+Folders this PC shares (hidden administrative shares such as `C$` are excluded) and the SMB (port 445) clients currently connected, with their IP address and host name.
+
+### 5. Nearby network devices
+
+![Nearby devices](images/05-nearby-devices.png)
+
+Devices found in the local /24 subnet, each with:
+
+- **Role:** Gateway (router), This PC (highlighted), or Device
+- **Status:** Online (answered ping) or ARP cache only (known from the ARP table but not answering)
+- **Name:** host name from reverse DNS, when available
+- **Vendor:** estimated from the MAC prefix; "Random MAC (privacy)" marks randomized addresses
+- **Response time** and **MAC address**
+
+### 6. Live speed estimate
+
+![Live speed](images/06-live-speed.png)
+
+Receive (↓) and send (↑) rates for all traffic on this PC, updated every second, with a 2-minute graph. This includes local network traffic, not only internet traffic.
+
+### 7. External download speed and regional table
+
+![Download speed](images/07-download-speed.png)
+
+- A 100 KB download test runs every 5 seconds. The big number is the latest result; average, maximum, minimum, response time and test count are shown below it.
+- The **region table** lists the default Cloudflare test and each region (Japan, Korea, Singapore, USA, China), sorted from fastest to slowest. Failed or unconfigured regions are listed last.
+
+### 8. Regional speed graphs
+
+![Region graphs](images/08-region-graphs.png)
+
+The upper graph draws one line per region over time. Hover over it to see every region's value at that moment. The lower graph shows the default Cloudflare test history.
+
+### 9. Recent results
+
+![Recent results](images/09-recent-results.png)
+
+The last eight download tests with time, KB/s, Mbps and response time.
+
 ## Requirements
 
 - Windows 10 or 11 (64-bit)
